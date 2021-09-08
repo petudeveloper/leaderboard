@@ -7,14 +7,14 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true
+    clean: true,
   },
   devServer: {
     static: './dist',
   },
   plugins: [
     new HtmlWebpackPlugin({
-        template: 'src/index.html',
+      template: 'src/index.html',
     }),
   ],
   module: {
@@ -22,7 +22,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
-      }
-    ]
-  }
+      },
+    ],
+  },
 };
