@@ -66,3 +66,7 @@ input {
 #submit-btn {
   width: 30%;
 }
+
+.clickable:hover {
+  cursor: pointer;
+}
