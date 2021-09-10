@@ -100,13 +100,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, style) {\
 
 /***/ }),
 
+/***/ "./src/dom-handler.js":
+/*!****************************!*\
+  !*** ./src/dom-handler.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _scores_handler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scores-handler */ \"./src/scores-handler.js\");\n/* eslint-disable import/no-cycle */\n\n\nconst form = document.getElementById('new-score-form');\nconst refreshBtn = document.getElementById('refresh-item');\nconst ul = document.getElementById('scores-list');\n\nform.addEventListener('submit', (event) => {\n  event.preventDefault();\n  const userName = document.getElementById('user-name');\n  const userScore = document.getElementById('user-score');\n  (0,_scores_handler__WEBPACK_IMPORTED_MODULE_0__.addScore)(userName.value, userScore.value);\n  userName.value = '';\n  userScore.value = '';\n});\n\nrefreshBtn.addEventListener('click', () => {\n  ul.innerHTML = '';\n  (0,_scores_handler__WEBPACK_IMPORTED_MODULE_0__.getScores)();\n});\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((scores) => {\n  scores.forEach((score) => {\n    const li = document.createElement('li');\n    li.innerHTML = `\n        <span>${score.user}: ${score.score} </span>    \n        `;\n    ul.appendChild(li);\n  });\n});\n\n//# sourceURL=webpack://leaderboard/./src/dom-handler.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\nconst form = document.getElementById('new-score-form');\nconst players = [\n  {\n    name: 'Player one',\n    score: 100,\n  },\n  {\n    name: 'Player two',\n    score: 99,\n  },\n  {\n    name: 'Player three',\n    score: 98,\n  },\n  {\n    name: 'Player four',\n    score: 97,\n  },\n  {\n    name: 'Player five',\n    score: 96,\n  },\n  {\n    name: 'Player six',\n    score: 95,\n  },\n  {\n    name: 'Player seven',\n    score: 94,\n  },\n  {\n    name: 'Player eight',\n    score: 93,\n  },\n  {\n    name: 'Player nine',\n    score: 92,\n  },\n  {\n    name: 'Player ten',\n    score: 91,\n  },\n];\n\nconst render = () => {\n  const list = document.getElementById('scores-list');\n  players.forEach((player, index) => {\n    const { name, score } = player;\n    list.innerHTML += `\n    <li id=\"user-${index}\" class=\"list-element\">\n      <span id=\"name-${index}\">${name}: </span>\n      <span id=\"score-${index}\"> ${score}</span>\n    </li>\n    `;\n  });\n};\n\nrender();\n\nform.addEventListener('submit', (event) => {\n  event.preventDefault();\n});\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _scores_handler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scores-handler */ \"./src/scores-handler.js\");\n\n\n\ndocument.addEventListener('DOMContentLoaded', () => {\n  (0,_scores_handler__WEBPACK_IMPORTED_MODULE_1__.getScores)();\n});\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/scores-handler.js":
+/*!*******************************!*\
+  !*** ./src/scores-handler.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addScore\": () => (/* binding */ addScore),\n/* harmony export */   \"getScores\": () => (/* binding */ getScores)\n/* harmony export */ });\n/* harmony import */ var _dom_handler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom-handler */ \"./src/dom-handler.js\");\n/* eslint-disable import/no-cycle */\n\n\nconst requestURL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/LMXYZnWz9iXxoiT9U5dE/scores/';\n\nconst addScore = async (name, score) => {\n  fetch(requestURL, {\n    method: 'POST',\n    body: JSON.stringify({\n      user: name,\n      score,\n    }),\n    headers: {\n      'Content-type': 'application/json; charset=UTF-8',\n    },\n  })\n    .then((response) => response.json())\n    .then((json) => json.result);\n};\n\nconst getScores = () => {\n  fetch(requestURL, {\n    method: 'GET',\n    headers: {\n      'Content-type': 'application/json; charset=UTF-8',\n    },\n  })\n    .then((response) => response.json())\n    .then((json) => json.result)\n    .then((data) => (0,_dom_handler__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(data));\n};\n\n//# sourceURL=webpack://leaderboard/./src/scores-handler.js?");
 
 /***/ })
 
