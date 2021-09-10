@@ -87,8 +87,9 @@ input:focus {
   width: 30%;
 }
 
-#submit-btn:hover, .clickable:hover {
+#submit-btn:hover,
+.clickable:hover {
   cursor: pointer;
   background-color: black;
-  color: rgb(255, 136, 0);;
+  color: rgb(255, 136, 0);
 }
