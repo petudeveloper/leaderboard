@@ -3,7 +3,7 @@ import renderScores from './dom-handler';
 
 const requestURL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/LMXYZnWz9iXxoiT9U5dE/scores/';
 
-export const addScore = (name, score) => {
+export const addScore = async (name, score) => {
   fetch(requestURL, {
     method: 'POST',
     body: JSON.stringify({
