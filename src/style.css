@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300&display=swap');
+
 body {
   margin-top: 7%;
+  font-family: 'Roboto Mono', monospace;
+  background-color: black;
 }
 
 ul {
@@ -8,7 +12,7 @@ ul {
 }
 
 li:nth-child(odd) {
-  background-color: rgb(204, 204, 204);
+  background-color: rgb(255, 136, 0);
 }
 
 #main-container,
@@ -25,6 +29,7 @@ li:nth-child(odd) {
 h1 {
   margin-left: 2.5vw;
   font-size: 2.5rem;
+  color: rgb(255, 136, 0);
 }
 
 h1,
@@ -34,16 +39,18 @@ section {
 
 h3 {
   margin: 3vh 0;
+  color: rgb(255, 136, 0);
 }
 
-#refresh-item {
+.style-btn {
   padding: 5px;
-  box-shadow: 5px 5px black;
-  border: 1px solid black;
+  box-shadow: 5px 5px rgb(122, 122, 122);
+  border: 1px solid rgb(122, 122, 122);
+  background-color: rgb(255, 136, 0);
 }
 
 #scores-list {
-  border: 1.5px solid black;
+  border: 3px solid rgb(255, 136, 0);
 }
 
 .list-element {
@@ -63,10 +70,25 @@ input {
   padding: 1.5%;
 }
 
+input {
+  border: 3px solid rgb(255, 136, 0);
+  background-color: rgb(255, 136, 0);
+}
+
+input::placeholder {
+  color: black;
+}
+
+input:focus {
+  background-color: rgb(177, 177, 177);
+}
+
 #submit-btn {
   width: 30%;
 }
 
-.clickable:hover {
+#submit-btn:hover, .clickable:hover {
   cursor: pointer;
+  background-color: black;
+  color: rgb(255, 136, 0);;
 }

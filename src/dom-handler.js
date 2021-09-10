@@ -22,8 +22,9 @@ refreshBtn.addEventListener('click', () => {
 export default (scores) => {
   scores.forEach((score) => {
     const li = document.createElement('li');
+    li.classList.add('text-light');
     li.innerHTML = `
-        <span>${score.user}: ${score.score} </span>    
+        <span class="ps-2">${score.user}: ${score.score} </span>    
         `;
     ul.appendChild(li);
   });
